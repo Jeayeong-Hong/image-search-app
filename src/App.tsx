@@ -27,7 +27,14 @@ function App() {
 
       <SearchBar onSearch={handleSearch} />
 
-      {loading && <p className="text-center text-gray-500">불러오는 중...</p>}
+      {/* query 상태를 실제로 사용하여 TS 오류 방지 + 사용자에게 현재 검색어 표시 */}
+      {query && (
+        <p className="text-sm text-center text-gray-400 mt-2">
+          현재 검색어: <span className="font-medium text-black">{query}</span>
+        </p>
+      )}
+
+      {loading && <p className="text-center text-gray-500 mt-4">불러오는 중...</p>}
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
         {images.map((img) => (
