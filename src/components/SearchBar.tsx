@@ -1,34 +1,42 @@
 import { useState } from "react";
 
-interface Props{
-    onSearch: (query: string) => void;
+interface Props {
+  onSearch: (query: string) => void;
 }
 
-export default function SearchBar({ onSearch }: Props) {
-    const [input, setInput] = useState("");
+function SearchBar({ onSearch }: Props) {
+  const [input, setInput] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (input.trim()) {
-            onSearch(input.trim());
-        }
-    };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) {
+      alert("검색어를 입력해주세요.");
+      return;
+    }
+    onSearch(input.trim());
+    setInput("");
+  };
 
-    return (
-        <form onSubmit={handleSubmit} className="flex justify-center mb-6">
-            <input
-                type="text"
-                placeholder="Search for images..."
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="w-1/2 px-4 py-2 border rounded-1-md focus:outline-none"
-            />
-            <button
-                type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700"
-            >
-                Search
-            </button>
-        </form> 
-    );
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-full max-w-md gap-2 items-center"
+    >
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="검색어를 입력하세요"
+        className="flex-grow border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-300"
+      />
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        검색
+      </button>
+    </form>
+  );
 }
+
+export default SearchBar;
