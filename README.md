@@ -1,54 +1,48 @@
-# React + TypeScript + Vite
+# Image Search App / 이미지 검색기
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple image search application built with React and TypeScript.  
+사용자가 입력한 검색어를 기반으로 이미지를 조회하고 시각적으로 출력하는 웹 애플리케이션입니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features / 주요 기능
 
-## Expanding the ESLint configuration
+- Search for images based on user input  
+  사용자 검색어를 기반으로 이미지 검색
+- Communicate with the Unsplash API using Axios  
+  Axios를 이용한 Unsplash 이미지 API 통신
+- Fullscreen modal image viewer with navigation  
+  이미지 클릭 시 전체 화면 모달 뷰어 제공
+- Responsive layout using Tailwind CSS  
+  Tailwind CSS 기반 반응형 레이아웃 구성
+- Copyable URL for sharing search results  
+  검색 결과 공유를 위한 URL 복사 기능 포함
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Tech Stack / 사용 기술
+
+- **Framework**: React, TypeScript  
+- **Styling**: Tailwind CSS  
+- **API**: Unsplash  
+- **Deployment**: Vercel
+
+---
+
+## Getting Started / 실행 방법
+
+### Frontend (Vite + React)
+
+```bash
+# Install dependencies / 의존성 설치
+npm install
+
+# Run the development server / 개발 서버 실행
+npm run dev
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deployment / 배포
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+This app is deployed on Vercel. You must also set your VITE_UNSPLASH_ACCESS_KEY in the Vercel Project → Settings → Environment Variables.
+해당 프로젝트는 Vercel에 배포되며, .env의 키 값도 동일하게 설정해줘야 합니다.
